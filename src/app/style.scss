@@ -1,0 +1,17 @@
+ul.no-style {
+	list-style-type: none;
+	margin-left: -20px;
+	margin-top: 5px;
+
+	li {
+		margin-bottom: 5px;
+	}
+
+	li.ok {
+		color: green;
+	}
+
+	li.nok {
+		color: red;
+	}
+}

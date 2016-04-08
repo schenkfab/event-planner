@@ -4,15 +4,22 @@ var wiredep = require('wiredep').stream;
 var browserSync = require('browser-sync').create();
 var sass = require('gulp-sass');
 
-gulp.task('inject', ['sass', 'js'], function () {
+gulp.task('inject', ['sass', 'js', 'directives'], function () {
 	var target = gulp.src('./src/index.html');
-	var sources = gulp.src(['./.tmp/**/*.js', './.tmp/**/*.css'], {read: false});
+	var sources = gulp.src(['./.tmp/**/*.js', './.tmp/**/style.css'], {read: false});
+	var vendorSources = gulp.src(['./.tmp/**/vendors.css'], {read: false});
 
 	return target
+		.pipe(inject(vendorSources, {ignorePath: '.tmp', starttag: '<!-- inject:cssVendors -->'}))
 		.pipe(inject(sources, {ignorePath: '.tmp'}))
 		.pipe(wiredep())
 		.pipe(gulp.dest('./.tmp'))
 		.pipe(browserSync.stream());
+});
+
+gulp.task('directives', function() {
+	return gulp.src('./src/app/**/*.html')
+		.pipe(gulp.dest('./.tmp/app'));
 });
 
 gulp.task('sass', function() {
