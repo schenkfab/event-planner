@@ -4,10 +4,10 @@ var wiredep = require('wiredep').stream;
 var browserSync = require('browser-sync').create();
 var sass = require('gulp-sass');
 
-gulp.task('inject', ['sass', 'js', 'directives'], function () {
+gulp.task('inject', ['css', 'fonts', 'sass', 'js', 'directives'], function () {
 	var target = gulp.src('./src/index.html');
 	var sources = gulp.src(['./.tmp/**/*.js', './.tmp/**/style.css'], {read: false});
-	var vendorSources = gulp.src(['./.tmp/**/vendors.css'], {read: false});
+	var vendorSources = gulp.src(['./.tmp/**/vendors.css', './.tmp/css/*.*'], {read: false});
 
 	return target
 		.pipe(inject(vendorSources, {ignorePath: '.tmp', starttag: '<!-- inject:cssVendors -->'}))
@@ -15,6 +15,16 @@ gulp.task('inject', ['sass', 'js', 'directives'], function () {
 		.pipe(wiredep())
 		.pipe(gulp.dest('./.tmp'))
 		.pipe(browserSync.stream());
+});
+
+gulp.task('fonts', function () {
+	return gulp.src('./bower_components/font-awesome/fonts/*.*')
+		.pipe(gulp.dest('./.tmp/fonts'));
+});
+
+gulp.task('css', function () {
+	return gulp.src('./bower_components/font-awesome/css/*.*')
+		.pipe(gulp.dest('./.tmp/css'));
 });
 
 gulp.task('directives', function() {
