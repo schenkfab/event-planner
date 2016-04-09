@@ -1,4 +1,4 @@
-<form>
+<form name='createAccountForm'>
 	<div class="form-group">
 		<label for="name">Name</label>
 		<input type="text" ng-model='user.name' class="form-control" id="name" placeholder="Name" required>
@@ -9,7 +9,7 @@
 	</div>
 	<div class="form-group has-error has-feedback">
 		<label for="password">Password</label>
-		<input type="password" ng-model='user.password' class="form-control" id="password" placeholder="Password" required ng-change='checkPassword()'>
+		<input type="password" ng-model-options="{allowInvalid: true}" ng-pattern='pwPattern' ng-model='user.password' class="form-control" id="password" placeholder="Password" required ng-change='checkPassword()'>
 	</div>
 	<div>
 		<label>Password Rules</label>
@@ -17,5 +17,5 @@
 			<li ng-repeat='criteria in passwordCriteria' ng-class='{ok: criteria.ok, nok: !criteria.ok}'><i class="fa fa-2x" ng-class='{"fa-check": criteria.ok, "fa-times": !criteria.ok}'></i> {{criteria.description}}</li>
 		</ul>
 	</div>
-	<button type="submit" class="btn btn-default">Next</button>
+	<button type="submit" ng-click='createAccountForm.$valid && createAccount()' ng-disabled='createAccountForm.$invalid' class="btn btn-default">Next</button>
 </form>

@@ -15,3 +15,15 @@ ul.no-style {
 		color: red;
 	}
 }
+
+div.page-nav {
+	padding: 10px;
+}
+
+div.active {
+	border-style: dashed;
+	border-width: 1px;
+	border-color: white;
+	color: white;
+	background-color: gray;
+}
