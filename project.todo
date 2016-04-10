@@ -4,10 +4,10 @@ You do not need to create a functioning back-end or save user information. Only 
 
 1) You do not need to create a real back-end or save user information, but the app must provide a form for users to create an account. Account creation should include, but is not limited to:
 
- ☐ Name
- ☐ Email address
- ☐ Secure password (with character and length requirements)
- ☐ Optional public biographical information (such as employer, job title, birthday, etc)
+ ✔ Name @done (16-04-10 13:13)
+ ✔ Email address @done (16-04-10 13:13)
+ ✔ Secure password (with character and length requirements) @done (16-04-10 13:13)
+ ✔ Optional public biographical information (such as employer, job title, birthday, etc) @done (16-04-10 13:13) <-- Keep it as simple as possible for the user, therefor no useless fields!
 
 2) The app should allow users to create a new event. Each event should, at a minimum, allow a user to set:
 
