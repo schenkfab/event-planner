@@ -1,17 +1,34 @@
 <form name='createAccountForm'>
-	<div class="form-group">
+	<div class="form-group"
+		ng-class="{ 'has-feedback': createAccountForm.name.$touched, 'has-error': createAccountForm.name.$touched && createAccountForm.name.$invalid, 'has-success': createAccountForm.name.$touched && createAccountForm.name.$valid }">
 		<label for="name">Name</label>
-		<input type="text" ng-model='user.name' class="form-control" id="name" placeholder="Name" required>
+		<input type="text" ng-minlength="4" ng-maxlength="10" ng-model='user.name' class="form-control" name="name" id="name" placeholder="Name" aria-describedby="nameStatus" required>
+		<span class="glyphicon form-control-feedback" ng-class="{'glyphicon-ok': createAccountForm.name.$valid, 'glyphicon-remove': createAccountForm.name.$invalid, }" ng-show='createAccountForm.name.$touched' aria-hidden="true"></span>
+		<span id="nameStatus" class="sr-only">{{(createAccountForm.name.$touched && createAccountForm.name.$valid) ? '(success)' : '(error)'}}</span>
+		<p class='nok' ng-show="createAccountForm.name.$touched && createAccountForm.name.$error.minlength">Name is too short. It must be at least 4 characters.</p>
+		<p class='nok' ng-show="createAccountForm.name.$touched && createAccountForm.name.$error.maxlength">Name is too long. It must be less than 11 characters.</p>
 	</div>
-	<div class="form-group">
+	<div class="form-group" 
+		ng-class="{'has-feedback': createAccountForm.email.$touched, 'has-error': createAccountForm.email.$touched && createAccountForm.email.$invalid, 'has-success': createAccountForm.email.$touched && createAccountForm.email.$valid }">
 		<label for="email">Email address</label>
-		<input type="email" ng-model='user.email' class="form-control" id="email" placeholder="Email" required>
+		<input type="email" ng-model='user.email' class="form-control" name='email' id="email" placeholder="Email" required aria-describedby="emailStatus">
+
+		<span class="glyphicon form-control-feedback" ng-class="{'glyphicon-ok': createAccountForm.email.$valid, 'glyphicon-remove': createAccountForm.email.$invalid, }" ng-show='createAccountForm.email.$touched' aria-hidden="true"></span>
+		<span id="emailStatus" class="sr-only">{{(createAccountForm.email.$touched && createAccountForm.email.$valid) ? '(success)' : '(error)'}}</span>
+
+		<p class='nok' ng-show="createAccountForm.email.$touched && createAccountForm.email.$touched && createAccountForm.email.$invalid">Mail address has a invalid format.</p>
 	</div>
-	<div class="form-group has-error has-feedback">
+
+	<div class="form-group"  ng-class="{'has-feedback': createAccountForm.password.$touched, 'has-error': createAccountForm.password.$touched && createAccountForm.password.$invalid, 'has-success': createAccountForm.password.$touched && createAccountForm.password.$valid }">
 		<label for="password">Password</label>
-		<input type="password" ng-model-options="{allowInvalid: true}" ng-pattern='pwPattern' ng-model='user.password' class="form-control" id="password" placeholder="Password" required ng-change='checkPassword()'>
+		<input type="password" name='password' ng-focus='pwFocus = true' ng-model-options="{allowInvalid: true}" ng-pattern='pwPattern' ng-model='user.password' class="form-control" id="password" placeholder="Password" required ng-change='checkPassword()'  required aria-describedby="passwordStatus">
+		
+		<span class="glyphicon form-control-feedback" ng-class="{'glyphicon-ok': createAccountForm.password.$valid, 'glyphicon-remove': createAccountForm.password.$invalid, }"  ng-show='createAccountForm.password.$touched' aria-hidden="true"></span>
+		<span id="passwordStatus" class="sr-only">{{(createAccountForm.password.$touched && createAccountForm.password.$valid) ? '(success)' : '(error)'}}</span>
+
 	</div>
-	<div>
+
+	<div ng-show='pwFocus && createAccountForm.password.$invalid'>
 		<label>Password Rules</label>
 		<ul class='no-style'>
 			<li ng-repeat='criteria in passwordCriteria' ng-class='{ok: criteria.ok, nok: !criteria.ok}'><i class="fa fa-2x" ng-class='{"fa-check": criteria.ok, "fa-times": !criteria.ok}'></i> {{criteria.description}}</li>

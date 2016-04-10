@@ -17,7 +17,12 @@ gulp.task('inject', ['css', 'fonts', 'sass', 'js', 'directives'], function () {
 		.pipe(browserSync.stream());
 });
 
-gulp.task('fonts', function () {
+gulp.task('bootstrap-font', function () {
+	return gulp.src('./bower_components/bootstrap/fonts/*.*')
+		.pipe(gulp.dest('./.tmp/fonts/bootstrap'));
+});
+
+gulp.task('fonts', ['bootstrap-font'], function () {
 	return gulp.src('./bower_components/font-awesome/fonts/*.*')
 		.pipe(gulp.dest('./.tmp/fonts'));
 });
