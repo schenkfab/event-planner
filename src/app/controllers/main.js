@@ -3,7 +3,6 @@ angular.module('myApp').controller('mainCtrl', function($scope, pageService, pas
 	// Define $scope variables for used services
 	$scope.passwordCriteria = passwordService.passwordCriteria;
 
-
 	$scope.checkPassword = function() {
 		// Check all the password requirements.
 		angular.forEach($scope.passwordCriteria, function(value) {
@@ -19,32 +18,22 @@ angular.module('myApp').controller('mainCtrl', function($scope, pageService, pas
 	$scope.event = {};
 	$scope.event.guests = [];
 
-	$scope.addGuest = function(e) {
-		if (e != null) {
-			e.preventDefault();
-		}
-		if($scope.guest != null && $scope.guest != '' && $scope.event.guests.indexOf($scope.guest) === -1) {
-			$scope.event.guests.push($scope.guest);
-		}
-		$scope.guest = '';
-	};
-
-	$scope.removeGuest = function(guest) {
-		if($scope.event.guests.indexOf(guest) !== -1) {
-			$scope.event.guests.splice($scope.event.guests.indexOf(guest), 1);
-		}
-	};
-
+	// pattern to be used to verify the password input in ng-pattern
 	$scope.pwPattern = /(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[$@$!%*?&])[A-Za-z\d$@$!%*?&]{8,}/;
 
+	// An easier way to access the pageService from ng-*
 	$scope.currentPage = function () {
 		return pageService.getCurrentPage();
 	};
 
+	// Initially set the page to create account.
 	pageService.setCurrentPage({title: 'Create Account', id: 'createAccount'});
 
 	$scope.createAccount = function() {
+		pageService.setCurrentPage({title: 'Create Event', id: 'createEvent'});
+	};
 
-		console.log($scope.user);
+	$scope.createEvent = function() {
+		console.log($scope.event);
 	};
 });

@@ -31,12 +31,12 @@
 					<hr>
 				</div>
 			</div>
-			<div class="row">
+			<div class="row" ng-show="currentPage().id === 'createAccount'">
 				<div class="col-md-8 col-md-offset-2">
 					<createaccount></createaccount>
 				</div>
 			</div>
-			<div class="row">
+			<div class="row" ng-show="currentPage().id === 'createEvent'">
 				<div class="col-md-8 col-md-offset-2">
 					<createevent></createevent>
 				</div>

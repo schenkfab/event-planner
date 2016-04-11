@@ -9,9 +9,9 @@
 		<p class='nok' ng-show="eventForm.name.$touched && eventForm.name.$error.maxlength">Name is too long. It must be less than 11 characters.</p>
 	</div>
 	<div class="form-group"
-		ng-class="{ 'has-feedback': eventForm.type.$touched, 'has-error': eventForm.type.$touched && eventForm.type.$invalid, 'has-success': eventForm.type.$touched && eventForm.type.$valid }">
+		ng-class="{ 'has-feedback': eventForm.type.$touched && event.type != '', 'has-error': eventForm.type.$touched && eventForm.type.$invalid, 'has-success': eventForm.type.$touched && eventForm.type.$valid && event.type != '' }">
 		<label for="type">Event Type</label>
-		<input list='types' ng-model='event.type' name='type' class="form-control" type="type" id="type" aria-describedby="typeStatus" required>
+		<input list='types' ng-model='event.type' name='type' class="form-control" ng-minlength="5" name="type" id="type" aria-describedby="typeStatus" required>
 		<datalist id='types'>
 		<option>Wedding</option>
 		<option>Birthday party</option>
@@ -40,26 +40,27 @@
 		<span id="endDatetimeStatus" class="sr-only">{{(eventForm.endDatetime.$touched && eventForm.endDatetime.$valid) ? '(success)' : '(error)'}}</span>
 	</div>
 	<!-- Input: Guest List -->
-	<div class="form-group">
-		<label for="guest">Guests</label>
-		<div class="row">
-			<div class="col-sm-8">
-				<input name='type' ng-enter='addGuest($event)' ng-model='guest' type='text' placeholder='Name' class="form-control">
-			</div>
-			<div class="col-sm-4">
-				<button type='button' ng-click='addGuest($event)' class="btn btn-default">Add</button>
-			</div>
-		</div>	
-	</div>
-	<ul class='no-style'>
-		<li ng-repeat='guest in event.guests'>
+	<div ng-controller='guestCtrl'>
+		<div class="form-group">
+			<label for="guest">Guests</label>
 			<div class="row">
-				<div class="col-md-3">{{guest}}</div>
-				<div class="col-md-1"><i class="fa fa-times" ng-click='removeGuest(guest)'></i> </div>
-			</div>
-		</li>
-	</ul>
-	
+				<div class="col-sm-8">
+					<input name='guest' ng-enter='addGuest($event)' ng-model='guest' type='text' placeholder='Name' class="form-control">
+				</div>
+				<div class="col-sm-4">
+					<button type='button' ng-click='addGuest($event)' class="btn btn-default">Add</button>
+				</div>
+			</div>	
+		</div>
+		<ul class='no-style'>
+			<li ng-repeat='guest in event.guests'>
+				<div class="row">
+					<div class="col-md-3">{{guest}}</div>
+					<div class="col-md-1"><i class="fa fa-times" ng-click='removeGuest(guest, $event)'></i> </div>
+				</div>
+			</li>
+		</ul>
+	</div>
 	<!-- Input: Location, could be extended by a location api later on -->
 	<div class="form-group"
 		ng-class="{ 'has-feedback': eventForm.location.$touched, 'has-error': eventForm.location.$touched && eventForm.location.$invalid, 'has-success': eventForm.location.$touched && eventForm.location.$valid }">
