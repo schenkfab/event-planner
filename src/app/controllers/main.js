@@ -23,7 +23,7 @@ angular.module('myApp').controller('mainCtrl', function($scope, pageService, pas
 		if (e != null) {
 			e.preventDefault();
 		}
-		if($scope.event.guests.indexOf($scope.guest) === -1) {
+		if($scope.guest != null && $scope.guest != '' && $scope.event.guests.indexOf($scope.guest) === -1) {
 			$scope.event.guests.push($scope.guest);
 		}
 		$scope.guest = '';
