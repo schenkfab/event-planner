@@ -16,6 +16,25 @@ angular.module('myApp').controller('mainCtrl', function($scope, pageService, pas
 		});
 	};
 
+	$scope.event = {};
+	$scope.event.guests = [];
+
+	$scope.addGuest = function(e) {
+		if (e != null) {
+			e.preventDefault();
+		}
+		if($scope.event.guests.indexOf($scope.guest) === -1) {
+			$scope.event.guests.push($scope.guest);
+		}
+		$scope.guest = '';
+	};
+
+	$scope.removeGuest = function(guest) {
+		if($scope.event.guests.indexOf(guest) !== -1) {
+			$scope.event.guests.splice($scope.event.guests.indexOf(guest), 1);
+		}
+	};
+
 	$scope.pwPattern = /(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[$@$!%*?&])[A-Za-z\d$@$!%*?&]{8,}/;
 
 	$scope.currentPage = function () {
