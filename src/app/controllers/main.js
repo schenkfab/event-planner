@@ -14,7 +14,10 @@ angular.module('myApp').controller('mainCtrl', function($scope, pageService, pas
 			}
 		});
 	};
-
+	$scope.events = [{name: 'Event 1',
+	host: 'John Peters', 
+	beginDatetime: new Date(2016, 5, 2, 11, 0, 0, 0), 
+	endDatetime: new Date(2016, 5, 3, 11, 0, 0, 0), location: 'Miami', guests: 'None'}];
 	$scope.event = {};
 	$scope.event.guests = [];
 
@@ -34,6 +37,8 @@ angular.module('myApp').controller('mainCtrl', function($scope, pageService, pas
 	};
 
 	$scope.createEvent = function() {
-		console.log($scope.event);
+		$scope.event.host = $scope.user.name;
+		$scope.events.push($scope.event);
+		pageService.setCurrentPage({title: 'Display Events', id: 'displayEvents'});
 	};
 });

@@ -1,0 +1,15 @@
+<table class="table table-striped">
+	<tr>
+		<th>Event</th>
+		<th>Date</th>
+		<th>Location</th>
+	</tr>
+	<tr ng-repeat='event in events'>
+		<td>{{event.name}} <br>
+		{{event.host}} <br>
+		{{event.type}}</td>
+		<td>Start: {{event.beginDatetime.toUTCString()}} <br>
+		End: {{event.endDatetime.toUTCString()}}</td>
+		<td>{{event.location}}</td>
+	</tr>
+</table>
