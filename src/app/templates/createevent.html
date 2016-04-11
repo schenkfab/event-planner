@@ -23,8 +23,10 @@
 	</div>
 	<div class="form-group" ng-class="{ 'has-feedback': eventForm.beginDatetime.$touched, 'has-error': eventForm.beginDatetime.$touched && eventForm.beginDatetime.$invalid, 'has-success': eventForm.beginDatetime.$touched && eventForm.beginDatetime.$valid }">
 		<label for='beginDatetime'>Start</label>
-		<input type="datetime-local" id='beginDatetime' ng-model='event.beginDatetime' name='beginDatetime' class='form-control' required>
-		{{eventForm.beginDatetime.$error}}
+		<input type="datetime-local" id='beginDatetime' ng-model='event.beginDatetime' name='beginDatetime' class='form-control' aria-describedby="beginDatetimeStatus" required>
+		<span class="glyphicon form-control-feedback" ng-class="{'glyphicon-ok': eventForm.beginDatetime.$valid, 'glyphicon-remove': eventForm.beginDatetime.$invalid, }" ng-show='eventForm.beginDatetime.$touched' aria-hidden="true"></span>
+		<span id="beginDatetimeStatus" class="sr-only">{{(eventForm.beginDatetime.$touched && eventForm.beginDatetime.$valid) ? '(success)' : '(error)'}}</span>
+
 	</div>
 	
 
