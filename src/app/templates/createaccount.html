@@ -16,7 +16,7 @@
 		<span class="glyphicon form-control-feedback" ng-class="{'glyphicon-ok': createAccountForm.email.$valid, 'glyphicon-remove': createAccountForm.email.$invalid, }" ng-show='createAccountForm.email.$touched' aria-hidden="true"></span>
 		<span id="emailStatus" class="sr-only">{{(createAccountForm.email.$touched && createAccountForm.email.$valid) ? '(success)' : '(error)'}}</span>
 
-		<p class='nok' ng-show="createAccountForm.email.$touched && createAccountForm.email.$touched && createAccountForm.email.$invalid">Mail address has a invalid format.</p>
+		<p class='nok' ng-show="createAccountForm.email.$touched && createAccountForm.email.$touched && createAccountForm.email.$invalid">Mail address has an invalid format.</p>
 	</div>
 
 	<div class="form-group required"  ng-class="{'has-feedback': createAccountForm.password.$touched, 'has-error': createAccountForm.password.$touched && createAccountForm.password.$invalid, 'has-success': createAccountForm.password.$touched && createAccountForm.password.$valid }">
