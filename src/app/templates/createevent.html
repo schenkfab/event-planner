@@ -65,7 +65,7 @@
 	<div class="form-group"
 		ng-class="{ 'has-feedback': eventForm.location.$touched, 'has-error': eventForm.location.$touched && eventForm.location.$invalid, 'has-success': eventForm.location.$touched && eventForm.location.$valid }">
 		<label for="location">Event Location</label>
-		<input type="text" ng-minlength="4" ng-maxlength="100" ng-model='event.location' class="form-control" name="location" id="location" placeholder="Location" aria-describedby="locationStatus" required>
+		<input ng-autocomplete details="details" type="text" ng-minlength="4" ng-maxlength="100" ng-model='event.location' class="form-control" name="location" id="location" placeholder="Location" aria-describedby="locationStatus" required>
 		<span class="glyphicon form-control-feedback" ng-class="{'glyphicon-ok': eventForm.location.$valid, 'glyphicon-remove': eventForm.location.$invalid, }" ng-show='eventForm.location.$touched' aria-hidden="true"></span>
 		<span id="locationStatus" class="sr-only">{{(eventForm.location.$touched && eventForm.location.$valid) ? '(success)' : '(error)'}}</span>
 		<p class='nok' ng-show="eventForm.location.$touched && eventForm.location.$error.minlength">Location is too short. It must be at least 4 characters.</p>
