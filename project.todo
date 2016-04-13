@@ -7,7 +7,6 @@ You do not need to create a functioning back-end or save user information. Only 
  ✔ Name @done (16-04-10 13:13)
  ✔ Email address @done (16-04-10 13:13)
  ✔ Secure password (with character and length requirements) @done (16-04-10 13:13)
- ✔ Optional public biographical information (such as employer, job title, birthday, etc) @done (16-04-10 13:13) <-- Keep it as simple as possible for the user, therefor no useless fields!
 
 2) The app should allow users to create a new event. Each event should, at a minimum, allow a user to set:
 
@@ -16,10 +15,11 @@ You do not need to create a functioning back-end or save user information. Only 
  ✔ Event host (could be an individual’s name or an organization) @done (16-04-11 12:40)
  ✔ Event start date and time @done (16-04-11 12:35)
  ✔ Event end date and time @done (16-04-11 12:35)
- ☐ Guest list
- ☐ Location
- ☐ Optional message to the guests with additional information about the event
+ ✔ Guest list @done (16-04-13 15:59)
+ ✔ Location @done (16-04-13 15:59)
 
-3) The app should display events that have been created.
+ ✔ 3) The app should display events that have been created. @done (16-04-13 15:59)
+
+
 
  

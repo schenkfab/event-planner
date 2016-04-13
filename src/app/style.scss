@@ -16,6 +16,11 @@ ul.no-style {
 	}
 }
 
+.form-group.required .control-label:after {
+  content:"*";
+  color:red;
+}
+
 p.nok {
 	padding-top: 10px;
 	color: red;
