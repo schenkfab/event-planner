@@ -4,12 +4,19 @@
 		<th>Date</th>
 		<th>Location</th>
 	</tr>
-	<tr ng-repeat='event in events'>
-		<td>{{event.name}} <br>
-		{{event.host}} <br>
-		{{event.type}}</td>
-		<td>Start: {{event.beginDatetime.toUTCString()}} <br>
-		End: {{event.endDatetime.toUTCString()}}</td>
+	<tr ng-repeat-start='event in events'>
+		<td><b>Name:</b> {{event.name}} <br>
+		<b>Host:</b> {{event.host}} <br>
+		<b>Type:</b> {{event.type}}</td>
+		<td><b>Start:</b> {{event.beginDatetime.toUTCString()}} <br>
+		<b>End:</b> {{event.endDatetime.toUTCString()}}</td>
 		<td>{{event.location}}</td>
+	</tr>
+	<tr ng-repeat-end>
+		<td colspan="3"><b>Guests:</b> 
+			<ul class='no-style'>
+				<li ng-repeat='guest in event.guests'>{{guest}}</li>
+			</ul>
+		</td>
 	</tr>
 </table>
