@@ -6,7 +6,7 @@ angular.module('myApp').controller('mainCtrl', function($scope, pageService, pas
 	$scope.checkPassword = function() {
 		// Check all the password requirements.
 		angular.forEach($scope.passwordCriteria, function(value) {
-			let regEx = new RegExp(value.regEx);
+			var regEx = new RegExp(value.regEx);
 			if($scope.user.password != null && regEx.test($scope.user.password) && $scope.user.password.length > 0) {
 				value.ok = true;
 			} else {
