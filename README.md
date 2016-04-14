@@ -12,7 +12,13 @@ npm install
 ```
 
 ## Start
+### Development
 Start the development build using:
 ```
-gulp serve
+gulp serve:dev
+```
+### Production
+Start the production build using:
+```
+gulp build:prod
 ```
