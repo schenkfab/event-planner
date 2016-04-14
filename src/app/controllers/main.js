@@ -23,7 +23,7 @@ angular.module('myApp').controller('mainCtrl', function($scope, pageService, pas
 
 	// pattern to be used to verify the password input in ng-pattern
 	$scope.pwPattern = /(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[$@$!%*?&])[A-Za-z\d$@$!%*?&]{8,}/;
-
+	$scope.emailPattern = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
 	// An easier way to access the pageService from ng-*
 	$scope.currentPage = function () {
 		return pageService.getCurrentPage();

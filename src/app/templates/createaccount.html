@@ -11,7 +11,7 @@
 	<div class="form-group required" 
 		ng-class="{'has-feedback': createAccountForm.email.$touched, 'has-error': createAccountForm.email.$touched && createAccountForm.email.$invalid, 'has-success': createAccountForm.email.$touched && createAccountForm.email.$valid }">
 		<label class='control-label' for="email">Email address</label>
-		<input type="email" ng-model='user.email' class="form-control" name='email' id="email" placeholder="Email" required aria-describedby="emailStatus">
+		<input type="email" ng-pattern='emailPattern' ng-model='user.email' class="form-control" name='email' id="email" placeholder="Email" required aria-describedby="emailStatus">
 
 		<span class="glyphicon form-control-feedback" ng-class="{'glyphicon-ok': createAccountForm.email.$valid, 'glyphicon-remove': createAccountForm.email.$invalid, }" ng-show='createAccountForm.email.$touched' aria-hidden="true"></span>
 		<span id="emailStatus" class="sr-only">{{(createAccountForm.email.$touched && createAccountForm.email.$valid) ? '(success)' : '(error)'}}</span>
