@@ -41,4 +41,8 @@ angular.module('myApp').controller('mainCtrl', function($scope, pageService, pas
 		$scope.events.push($scope.event);
 		pageService.setCurrentPage({title: 'Display Events', id: 'displayEvents'});
 	};
+
+	$scope.setPage = function(page) {
+		pageService.setCurrentPage(page);
+	};
 });

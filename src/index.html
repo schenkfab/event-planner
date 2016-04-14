@@ -15,13 +15,13 @@
 		<hr>
 		<div class="container">
 			<div class="row">
-				<div class="col-md-3 col-md-offset-2 text-center page-nav" ng-class='{active: currentPage().id == "createAccount"}'>
+				<div ng-click='setPage({title: "Create Account", id: "createAccount"})' class="col-md-3 col-md-offset-2 text-center page-nav" ng-class='{active: currentPage().id == "createAccount"}'>
 					<i class="fa fa-user-plus"></i> Create Account
 				</div>
-				<div class="col-md-2 text-center page-nav" ng-class='{active: currentPage().id == "createEvent"}'>
+				<div ng-click='setPage({title: "Create Event", id: "createEvent"})' class="col-md-2 text-center page-nav" ng-class='{active: currentPage().id == "createEvent"}'>
 					<i class="fa fa-calendar"></i> Create Event
 				</div>
-				<div class="col-md-3 text-center page-nav" ng-class='{active: currentPage().id == "displayEvents"}'>
+				<div ng-click='setPage({title: "Display Event", id: "displayEvents"})' class="col-md-3 text-center page-nav" ng-class='{active: currentPage().id == "displayEvents"}'>
 					<i class="fa fa-list"></i> Display Events
 				</div>
 			</div>

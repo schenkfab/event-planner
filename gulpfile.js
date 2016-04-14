@@ -65,7 +65,7 @@ gulp.task('serve:dev', ['inject:dev'], function() {
 		}
 	});
 
-	gulp.watch('src/**/*', ['inject']);
+	gulp.watch('src/**/*', ['inject:dev']);
 	gulp.watch('.tmp').on('change', browserSync.reload);
 });
 
