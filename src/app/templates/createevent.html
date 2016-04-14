@@ -2,7 +2,7 @@
 	<div class="form-group required"
 		ng-class="{ 'has-feedback': eventForm.name.$touched, 'has-error': eventForm.name.$touched && eventForm.name.$invalid, 'has-success': eventForm.name.$touched && eventForm.name.$valid }">
 		<label class='control-label' for="name">Event Name</label>
-		<input type="text" ng-minlength="4" ng-maxlength="50" ng-model='event.name' class="form-control" name="name" id="name" placeholder="Name" aria-describedby="nameStatus" required>
+		<input type="text" ng-minlength="4" ng-maxlength="50" focus-if='currentPage().id === "createEvent"' ng-model='event.name' class="form-control" name="name" id="name" placeholder="Name" aria-describedby="nameStatus" required>
 		<span class="glyphicon form-control-feedback" ng-class="{'glyphicon-ok': eventForm.name.$valid, 'glyphicon-remove': eventForm.name.$invalid, }" ng-show='eventForm.name.$touched' aria-hidden="true"></span>
 		<span id="nameStatus" class="sr-only">{{(eventForm.name.$touched && eventForm.name.$valid) ? '(success)' : '(error)'}}</span>
 		<p class='nok' ng-show="eventForm.name.$touched && eventForm.name.$error.minlength">Name is too short. It must be at least 4 characters.</p>
