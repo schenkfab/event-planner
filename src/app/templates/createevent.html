@@ -71,7 +71,11 @@
 		<p class='nok' ng-show="eventForm.location.$touched && eventForm.location.$error.minlength">Location is too short. It must be at least 4 characters.</p>
 		<p class='nok' ng-show="eventForm.location.$touched && eventForm.location.$error.maxlength">Location is too long. It must be less than 100 characters.</p>
 	</div>
-
+	<hr>
+	<div class="form-group">
+		<label class='control-label' for="guestInfos">Information for guests</label>
+		<textarea ng-model="event.infos" class="form-control" rows="5" name="guestInfos" id='guestInfos'></textarea>
+	</div>
 	<hr>
 	<button type="submit" ng-click='eventForm.$valid && createEvent()' ng-disabled='eventForm.$invalid' class="btn btn-default">Next</button>
 </form>
