@@ -1,5 +1,5 @@
-# event-planner
-Udacity Project 1: Event Planner
+# Event Planer
+Udacity Project 1: Event Planer
 
 ## Installation
 Run both 
