@@ -41,7 +41,7 @@
 	</div>
 	<!-- Input: Guest List -->
 	<div ng-controller='guestCtrl'>
-		<div class="form-group required">
+		<div class="form-group required" ng-class="{ 'has-feedback': eventForm.guest.$touched, 'has-error': eventForm.guest.$touched && event.guests.length < 1, 'has-success': eventForm.guest.$touched && event.guests.length > 0 }">
 			<label class='control-label' for="guest">Guests</label>
 			<div class="row">
 				<div class="col-sm-8">
@@ -77,5 +77,5 @@
 		<textarea ng-model="event.infos" class="form-control" rows="5" name="guestInfos" id='guestInfos'></textarea>
 	</div>
 	<hr>
-	<button type="submit" ng-click='eventForm.$valid && createEvent()' ng-disabled='eventForm.$invalid' class="btn btn-default">Next</button>
+	<button type="submit" ng-click='eventForm.$valid && createEvent()' ng-disabled='eventForm.$invalid || event.guests.length < 1' class="btn btn-default">Next</button>
 </form>
