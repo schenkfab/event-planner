@@ -6,11 +6,13 @@ var sass = require('gulp-sass');
 var clean = require('gulp-clean');
 var runSequence = require('run-sequence');
 var concat = require('gulp-concat');
+var uglify = require('gulp-uglify');
+var gutil = require('gulp-util');
 
 gulp.task('inject:dev', ['css:dev', 'fonts:dev', 'sass:dev', 'js:dev', 'directives:dev'], function () {
 	var target = gulp.src('./src/index.html');
 	var sources = gulp.src(['./.tmp/**/*.js', './.tmp/**/style.css'], {read: false});
-	var sourceVendorJs = gulp.src(['./bower_components/jquery/dist/jquery.js', './bower_components/angular/angular.js']);
+	var sourceVendorJs = gulp.src(['./bower_components/jquery/dist/jquery.js', './bower_components/angular/angular.js', './bower_components/ng-focus-if/focusIf.js']);
 	var vendorSources = gulp.src(['./.tmp/**/vendors.css', './.tmp/css/*.*'], {read: false});
 
 	return target
@@ -117,13 +119,16 @@ gulp.task('sass:prod', function() {
 
 gulp.task('js:prod', function() {
 	return gulp.src('./src/app/**/*.js')
+		.pipe(uglify({mangle: false}).on('error', gutil.log))
 		.pipe(concat('all.js'))
+		
 		.pipe(gulp.dest('./dist/js'));
 });
 
 gulp.task('vendorJs:prod', function() {
-	return gulp.src(['./bower_components/angular/angular.js', './bower_components/bootstrap/dist/js/bootstrap.js'])
+	return gulp.src(['./bower_components/angular/angular.js', './bower_components/bootstrap/dist/js/bootstrap.js', './bower_components/ng-focus-if/focusIf.js'])
 		.pipe(concat('vendor.js'))
+		.pipe(uglify({mangle: false}))
 		.pipe(gulp.dest('./dist/js'));
 });
 
