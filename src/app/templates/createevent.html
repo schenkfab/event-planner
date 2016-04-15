@@ -37,9 +37,9 @@
 		<label class='control-label' for='endDatetime'>End</label>
 		<input type="datetime-local" id='endDatetime' ng-model='event.endDatetime' name='endDatetime' class='form-control' aria-describedby="endDatetimeStatus" required>
 		<span class="glyphicon form-control-feedback" ng-class="{'glyphicon-ok': eventForm.endDatetime.$valid, 'glyphicon-remove': eventForm.endDatetime.$invalid || endDateValid(), }" ng-show='eventForm.endDatetime.$touched' aria-hidden="true"></span>
-		<span id="endDatetimeStatus" class="sr-only">{{(eventForm.endDatetime.$touched && eventForm.endDatetime.$valid) ? '(success)' : '(error)'}}</span>
+		<span id="endDatetimeStatus" class="sr-only">{{(eventForm.endDatetime.$touched && eventForm.endDatetime.$valid) ? '(success)' : '(error)'}}</span>	
+		<p class='nok' ng-show="eventForm.endDatetime.$touched && endDateValid()">Event should not end before it starts.</p>
 	</div>
-	<div ng-click='endDateValid()'>TEST</div>
 	<!-- Input: Guest List -->
 	<div ng-controller='guestCtrl'>
 		<div class="form-group required" ng-class="{ 'has-feedback': eventForm.guest.$touched, 'has-error': eventForm.guest.$touched && event.guests.length < 1, 'has-success': eventForm.guest.$touched && event.guests.length > 0 }">
@@ -78,5 +78,5 @@
 		<textarea ng-model="event.infos" class="form-control" rows="5" name="guestInfos" id='guestInfos'></textarea>
 	</div>
 	<hr>
-	<button type="submit" ng-click='eventForm.$valid && createEvent()' ng-disabled='eventForm.$invalid || event.guests.length < 1' class="btn btn-default">Next</button>
+	<button type="submit" ng-click='eventForm.$valid && createEvent()' ng-disabled='eventForm.$invalid || event.guests.length < 1 || endDateValid()' class="btn btn-default">Next</button>
 </form>
