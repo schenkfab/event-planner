@@ -45,4 +45,11 @@ angular.module('myApp').controller('mainCtrl', function($scope, pageService, pas
 	$scope.setPage = function(page) {
 		pageService.setCurrentPage(page);
 	};
+
+	$scope.endDateValid = function () {
+		var end = new Date($scope.event.endDatetime);
+		var start = new Date($scope.event.beginDatetime);
+
+		return (end < start);
+	};
 });

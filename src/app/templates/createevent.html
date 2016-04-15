@@ -33,12 +33,13 @@
 		<span id="beginDatetimeStatus" class="sr-only">{{(eventForm.beginDatetime.$touched && eventForm.beginDatetime.$valid) ? '(success)' : '(error)'}}</span>
 	</div>
 	<!-- Input: End date and time of the event -->
-	<div class="form-group required" ng-class="{ 'has-feedback': eventForm.endDatetime.$touched, 'has-error': eventForm.endDatetime.$touched && eventForm.endDatetime.$invalid, 'has-success': eventForm.endDatetime.$touched && eventForm.endDatetime.$valid }">
+	<div class="form-group required" ng-class="{ 'has-feedback': eventForm.endDatetime.$touched, 'has-error': eventForm.endDatetime.$touched && (eventForm.endDatetime.$invalid || endDateValid()), 'has-success': eventForm.endDatetime.$touched && eventForm.endDatetime.$valid }">
 		<label class='control-label' for='endDatetime'>End</label>
 		<input type="datetime-local" id='endDatetime' ng-model='event.endDatetime' name='endDatetime' class='form-control' aria-describedby="endDatetimeStatus" required>
-		<span class="glyphicon form-control-feedback" ng-class="{'glyphicon-ok': eventForm.endDatetime.$valid, 'glyphicon-remove': eventForm.endDatetime.$invalid, }" ng-show='eventForm.endDatetime.$touched' aria-hidden="true"></span>
+		<span class="glyphicon form-control-feedback" ng-class="{'glyphicon-ok': eventForm.endDatetime.$valid, 'glyphicon-remove': eventForm.endDatetime.$invalid || endDateValid(), }" ng-show='eventForm.endDatetime.$touched' aria-hidden="true"></span>
 		<span id="endDatetimeStatus" class="sr-only">{{(eventForm.endDatetime.$touched && eventForm.endDatetime.$valid) ? '(success)' : '(error)'}}</span>
 	</div>
+	<div ng-click='endDateValid()'>TEST</div>
 	<!-- Input: Guest List -->
 	<div ng-controller='guestCtrl'>
 		<div class="form-group required" ng-class="{ 'has-feedback': eventForm.guest.$touched, 'has-error': eventForm.guest.$touched && event.guests.length < 1, 'has-success': eventForm.guest.$touched && event.guests.length > 0 }">
